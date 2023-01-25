@@ -1,0 +1,29 @@
+
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/shellymathew98/grpc-users/users/proto";
+
+message UserInfo {
+    string id = 1;
+    string name = 2;
+    string place = 3;
+}
+
+message Id {
+    string value = 1;
+}
+
+message Status {
+    int32 value = 1;
+}
+
+
+
+service UserService{
+    rpc GetUser (Id) returns (UserInfo);
+    rpc CreateUser (UserInfo) returns (Id);
+    rpc DeleteUser (Id) returns (Status);
+    rpc UpdateUser (UserInfo) returns (Status);
+}
